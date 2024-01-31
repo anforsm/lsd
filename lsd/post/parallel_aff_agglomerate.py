@@ -140,6 +140,7 @@ def agglomerate_in_block(
     _, _, initial_rag = next(generator)
     for edge in initial_rag:
         u, v = fragment_relabel_map[edge['u']], fragment_relabel_map[edge['v']]
+        u, v = int(u), int(v)
         # this might overwrite already existing edges from neighboring blocks,
         # but that's fine, we only write attributes for edges within write_roi
         rag.add_edge(u, v, merge_score=None, agglomerated=True)
@@ -175,4 +176,4 @@ def agglomerate_in_block(
 
     # write back results (only within write_roi)
     logger.debug("writing to DB...")
-    rag.write_edges(block.write_roi)
+    rag_provider.write_edges(rag.nodes,rag.edges,block.write_roi)
