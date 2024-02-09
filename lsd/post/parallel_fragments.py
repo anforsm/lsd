@@ -210,7 +210,7 @@ def watershed_in_block(
     if filter_fragments > 0:
 
         if fragments_in_xy:
-            average_affs = np.mean(affs.data[0:2]/max_affinity_value, axis=0)
+            average_affs = np.mean(affs.data[-2:]/max_affinity_value, axis=0)
         else:
             average_affs = np.mean(affs.data/max_affinity_value, axis=0)
 

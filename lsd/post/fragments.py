@@ -40,7 +40,7 @@ def watershed_from_affinities(
 
     if fragments_in_xy:
 
-        mean_affs = 0.5*(affs[1] + affs[2])
+        mean_affs = 0.5*(affs[-1] + affs[-2])
         depth = mean_affs.shape[0]
 
         fragments = np.zeros(mean_affs.shape, dtype=np.uint64)
